@@ -16,9 +16,6 @@ pipeine {
 				echo "Test"
 			}
 	}
-
-	}
-
 	post {
 		always {
 			echo "This will always run"
@@ -30,5 +27,9 @@ pipeine {
 			echo "This will run only if failed"
 		}
 	}
+
+	}
+
+	
 
 }
