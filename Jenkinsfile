@@ -1,11 +1,34 @@
-node {
-	stage('Build') {
-		echo "Build"
+pipeine {
+	agent any
+	stages{
+		stage('Build') {
+			steps{
+				echo "Build"
+			}
 	}
 	stage('Test') {
-		echo "Test"
+			steps{
+				echo "Test"
+			}
 	}
 	stage('Integration Test') {
-		echo "Test"
+			steps{
+				echo "Test"
+			}
 	}
+
+	}
+
+	POST {
+		always {
+			echo "This will always run"
+		}
+		success {
+			echo "This will run only if successful"
+		}
+		failure {
+			echo "This will run only if failed"
+		}
+	}
+
 }
