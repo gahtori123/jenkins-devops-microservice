@@ -1,24 +1,30 @@
 pipeline {
-    agent {docker{
-        image 'maven:3.6.3'
-    }}
+    agent {
+        docker {
+            image 'maven:3.6.3'
+            args '-v /root/.m2:/root/.m2'   // optional: to cache maven dependencies
+        }
+    }
+
     stages {
         stage('Build') {
             steps {
                 sh "mvn --version"
-                echo "Build"
+                sh "mvn clean package"
+                echo "Build Completed"
             }
         }
 
         stage('Test') {
             steps {
-                echo "Test"
+                echo "Running Tests"
+                sh "mvn test"
             }
         }
 
         stage('Integration Test') {
             steps {
-                echo "Integration Test"
+                echo "Integration Test Stage Executed"
             }
         }
     }
